@@ -1,0 +1,36 @@
+<div class="panel">
+  <div class="panel-heading">
+    <p>战机详情</p>
+  </div>
+  <div class="panel-body aircraft-detial">
+    <div class="row">
+      <div class="col-xs-6">
+        <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="">
+      </div>
+      <div class="col-xs-6">
+        <dl class="dl-horizontal">
+          <dt>战机</dt>
+          <dd>{{aircraft.title}}</dd>
+
+          <dt>简介</dt>
+          <dd>{{aircraft.des}}</dd>
+
+          <dt>制造厂商</dt>
+          <dd>{{aircraft.manufacturer}}</dd>
+
+          <dt>售价</dt>
+          <dd>{{aircraft.price | currency : '&yen;'}}</dd>
+
+          <dt>库存</dt>
+          <dd>{{aircraft.sales}}</dd>
+
+          <dt>发售时间</dt>
+          <dd>{{aircraft.uptime * 1000 | date : "yyyy-MM-dd HH:MM:ss"}}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a href="#/aircraftList" class="btn btn-info">返回战机列表</a>
+  </div>
+</div>
