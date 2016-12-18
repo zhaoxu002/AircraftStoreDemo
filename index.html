@@ -2,16 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>SuperAircraftStore---Fighters and Boomers</title>
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
   </head>
-  <body>
+  <body ng-app="app">
+    <div class="container">
+      <header class="page-header">
+        <h1>SuperAircraftStore <small>出售各类战机</small></h1>
+      </header>
+      <div ng-view>
 
+      </div>
+    </div>
 
-    <script src="./lib/angular.min.css" charset="utf-8"></script>
-    <script src="./lib/angular-route.min.css" charset="utf-8"></script>
-    <script src="./lib/jquery-3.1.1.min.css" charset="utf-8"></script>
-    <script src="./lib/bootstrap.min.css" charset="utf-8"></script>
+    <script src="./lib/angular.min.js" charset="utf-8"></script>
+    <script src="./lib/angular-route.js" charset="utf-8"></script>
+    <script src="./lib/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="./lib/bootstrap.min.js" charset="utf-8"></script>
+    <script src="./js/app.js" charset="utf-8"></script>
+    <script src="./js/config.js" charset="utf-8"></script>
+    <script src="./js/aircraftListCtrlModule.js" charset="utf-8"></script>
+    <script src="./js/getAircraftDataModule.js" charset="utf-8"></script>
+    <script src="./js/aircraftDetailCtrlModule.js" charset="utf-8"></script>
   </body>
 </html>
