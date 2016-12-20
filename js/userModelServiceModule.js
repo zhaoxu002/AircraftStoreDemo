@@ -5,7 +5,7 @@
         $http.post(
           APIPATH+url,
           data,
-          {headers: {'Content-type': 'application/x-www-urlencoded'}}
+          {headers: {'Content-type': 'application/x-www-form-urlencoded'}}
         ).then(success, error);
       }
     }])
