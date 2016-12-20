@@ -1,0 +1,39 @@
+<div class="row" ng-controller="shoppingCartCtrl">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>型号</th>
+        <th>价格</th>
+        <th>数量</th>
+        <th>小计</th>
+        <th>操作</th>
+      </tr>
+      <tr ng-repeat="(key, aircraft) in shoppingCartList">
+        <td>{{key}}</td>
+        <td>{{aircraft.aircraft_name}}</td>
+        <td>{{aircraft.aircraft_price | currency : "&yen;"}}</td>
+        <td>
+          <button class="btn btn-default btn-sm" ng-click="minusNum(key)" data-toggle="tooltip" data-placement="top" title="只剩下一架了" id="minusBtn{{key}}">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+          {{aircraft.countShoppingCart}}
+          <button class="btn btn-default btn-sm" ng-click="addNum(key)"  id="addBtn{{key}}">
+            <span class="glyphicon glyphicon-add"></span>
+          </button>
+        </td>
+        <td>
+          {{aircraft.aircraft_price * aircraft.countShoppingCart | currency : "&yen;"}}
+        </td>
+        <td>
+          <button class="btn btn-default" ng-click="deleteAircraft(key)">
+            删除
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">总价格 {{total | currency : "&yen;"}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

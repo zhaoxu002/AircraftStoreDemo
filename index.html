@@ -7,17 +7,28 @@
     <link rel="stylesheet" href="./lib/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
   </head>
-  <body ng-app="app">
+  <body ng-app="app"  ng-controller="mainCtrl">
     <div class="container">
-      <header class="page-header">
+      <header class="page-header row">
         <h1>SuperAircraftStore <small>出售各类战机</small></h1>
+        <span ng-show="user.username">您已登录</span>
+        <a href="#/login" class="btn btn-default" ng-hide="user.username">Login</a>
+        <a ng-click="logout()" class="btn btn-default" ng-show="user.username">Logout</a>
+        <a href="#/register" class="btn btn-default">Register</a>
+        <div class="col-sm-4">
+          <button class="btn btn-default" ng-click="gotoShoppingCart()">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span ng-bind="quantityOfGoods"></span>
+          </button>
+        </div>
+      </div>
       </header>
       <div ng-view>
 
       </div>
     </div>
 
-    <script src="./lib/angular.min.js" charset="utf-8"></script>
+    <script src="./lib/angular.js" charset="utf-8"></script>
     <script src="./lib/angular-route.js" charset="utf-8"></script>
     <script src="./lib/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="./lib/bootstrap.min.js" charset="utf-8"></script>
@@ -26,5 +37,10 @@
     <script src="./js/aircraftListCtrlModule.js" charset="utf-8"></script>
     <script src="./js/getAircraftDataModule.js" charset="utf-8"></script>
     <script src="./js/aircraftDetailCtrlModule.js" charset="utf-8"></script>
+    <script src="./js/localStorageModule.js" charset="utf-8"></script>
+    <script src="./js/shoppingCartModule.js" charset="utf-8"></script>
+    <script src="./js/cookieModule.js" charset="utf-8"></script>
+    <script src="./js/userloginModule.js" charset="utf-8"></script>
+    <script src="./js/userModelServiceModule.js" charset="utf-8"></script>
   </body>
 </html>

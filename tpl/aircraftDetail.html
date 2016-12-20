@@ -1,8 +1,8 @@
-<div class="panel">
+<div class="panel" ng-controller="aircraftDetailCtrl">
   <div class="panel-heading">
     <p>战机详情</p>
   </div>
-  <div class="panel-body aircraft-detial">
+  <div class="panel-body aircraft-detail">
     <div class="row">
       <div class="col-xs-6">
         <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="">
@@ -32,5 +32,11 @@
   </div>
   <div class="panel-footer">
     <a href="#/aircraftList" class="btn btn-info">返回战机列表</a>
+    <button class="btn btn-default" ng-click="addToShoppingCart(aircraft)">添加到购物车</button>
+  </div>
+  <div class="row">
+    <div class="col-ms-12">
+      <img ng-src="{{IMAGEPATH+img.image_name}}" alt="{{aircraft.title}}" ng-repeat="(key, img) in aircraft.images" ng-hide="key === 0">
+    </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 (function () {
   angular.module('aircraftListCtrlModule', [])
-    .controller('aircraftListCtrl', ['$scope', 'getAircraftData', 'IMAGEPATH', function ($scope, getAircraftData, IMAGEPATH) {
+    .controller('aircraftListCtrl', ['$scope',  'getAircraftData', 'shoppingCartData', 'IMAGEPATH', function ($scope, getAircraftData, shoppingCartData, IMAGEPATH) {
       $scope.IMAGEPATH = IMAGEPATH;
       $scope.aircraftList = [];
 
@@ -16,5 +16,19 @@
           console.log(error);
         }
       );
+
+      $scope.shoppingCartList = shoppingCartData.data;
+      //添加到购物车
+      $scope.addToShoppingCart = function (aircraft) {
+        if ($scope.shoppingCartList[aircraft.id]) {
+          $scope.shoppingCartList[aircraft.id].countShoppingCart ++;
+        } else {
+          $scope.shoppingCartList[aircraft.id] = {
+            'aircraft_name'    : aircraft.title,
+            'aircraft_price'   : aircraft.price,
+            'countShoppingCart': 1
+          }
+        }
+      }
     }])
 })()
