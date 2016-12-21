@@ -16,6 +16,28 @@
           alert('reg fail');
         })
       }
+      //验证用户名
+      $scope.yesornot = false;
+      $scope.confirmUsername = function () {
+
+        userModelService.postUser('register.php', $httpParamSerializer({
+          username: $scope.username
+        }), function (data) {
+
+          if (data.data.code === 7) {
+            //重名了
+            $scope.yesornot = true;
+          } else if (data.data.code === 8) {
+            $scope.yesornot = false;
+          }
+        }, function () {
+          console.log('miss');
+        })
+        console.log($scope.yesornot);
+      }
+
+
+
     }])
     .controller('loginCtrl', ['$scope', 'userModelService', '$httpParamSerializer', '$location', 'cookieService', 'USERNAME', function ($scope, userModelService, $httpParamSerializer, $location, cookieService, USERNAME) {
       $scope.doLogin = function () {

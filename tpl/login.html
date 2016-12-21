@@ -9,11 +9,11 @@
 		<form name="regForm" ng-submit="doLogin()">
 			<div class="form-group">
 				<label for="">用户名：</label>
-				<input type="text" class="form-control" ng-model="username">
+				<input type="text" class="form-control" ng-model="username" ng-required="true">
 			</div>
 			<div class="form-group">
 				<label for="">密码：</label>
-				<input type="password" class="form-control" ng-model="pwd">
+				<input type="password" class="form-control" ng-model="pwd" ng-required="true">
 			</div>
 
 
