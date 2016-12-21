@@ -17,7 +17,9 @@
         }
       );
 
-      $scope.shoppingCartList = shoppingCartData.data;
+      /*$scope.shoppingCartList = shoppingCartData.data;
+
+
       //添加到购物车
       $scope.addToShoppingCart = function (aircraft) {
         if ($scope.shoppingCartList[aircraft.id]) {
@@ -29,6 +31,6 @@
             'countShoppingCart': 1
           }
         }
-      }
+      }*/
     }])
 })()
