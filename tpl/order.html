@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="buildAddress">
+      <form name="addrForm">
+        <div class="form-group">
+          <label for="">姓名</label>
+          <input type="text" class="form-control" ng-model="name" ng-required="true">
+        </div>
+        <div class="form-group">
+          <label for="">地址</label>
+          <input type="text" class="form-control" ng-model="address" ng-required="true">
+        </div>
+        <div class="form-group">
+          <label for="">电话</label>
+          <input type="text" class="form-control" ng-model="phone" ng-required="true">
+        </div>
+        <div class="form-group">
+          <label for="">备注</label>
+          <input type="text" class="form-control" ng-model="info" ng-required="true">
+        </div>
+      </form>
+    </div>
+    <div class="orderList">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="aircraft in orderList">
+          <!-- <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt=""> -->
+          <span>战机名{{aircraft.aircraft_name}}</span>
+          <span>价格{{aircraft.aircraft_price | currency : "&yen;"}}</span>
+          <span>数量{{aircraft.countShoppingCart}}</span>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-default" ng-click="postOrderDetail()">提交订单</button>
+    {{name}},{{phone}},{{info}}
+  </div>
+</div>

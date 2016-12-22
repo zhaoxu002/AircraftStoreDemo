@@ -47,6 +47,7 @@
         }), function (response) {
           if (response.data.code === 0) {
             cookieService.setCookie('user', response.data.data['users_name']);
+            cookieService.setCookie('userId', response.data.data['users_id']);
 
             $scope.user.username = response.data.data['users_name'];
 

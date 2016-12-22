@@ -30,6 +30,10 @@
           templateUrl: './tpl/login.html',
           controller: 'loginCtrl'
         })
+        .when('/order',{
+          templateUrl: './tpl/order.html',
+          controller: 'straightOrderCtrl'
+        })
         .otherwise({
           redirectTo: '/aircraftList'
         });

@@ -9,7 +9,8 @@
     'userModelServiceModule',
     'userloginModule',
     'cookieServiceModule',
-    'shoppingCartModule'
+    'shoppingCartModule',
+    'straightOrderModule'
   ])
     .service('shoppingCartData', ['localStorageService',function (localStorageService) {
       var lsdata = localStorageService.getData('shoppingCart');
