@@ -64,6 +64,7 @@
       $scope.logout = function () {
         cookieService.deleteCookie('user');
         $scope.user.username = false;
+        $location.path('aircraftList');
       }
 
       //添加商品到购物车 现置于主控制器中

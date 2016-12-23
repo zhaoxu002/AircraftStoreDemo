@@ -16,6 +16,17 @@
           alert('reg fail');
         })
       }
+      //验证两次输入的密码相同
+      $scope.sameornot = false;
+      $scope.confirmRepwd = function () {
+        if ($scope.pwd == $scope.repwd) {
+          //相同了
+          $scope.sameornot = true;
+        } else {
+          //不相同
+          $scope.sameornot = false;
+        }
+      }
       //验证用户名
       $scope.yesornot = false;
       $scope.confirmUsername = function () {

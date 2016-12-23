@@ -9,7 +9,9 @@
       'userModelService',
       '$httpParamSerializer',
       'cookieService',
-      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService) {
+      'localStorageService',
+
+      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService, localStorageService) {
         //获取订单商品
         //console.log(shoppingCartData.data);
         $scope.orderList = shoppingCartData.data;
@@ -32,6 +34,8 @@
             function (response) {
               if (response.data.code === 0) {
                 console.log('success');
+                localStorageService.setData('shoppingCart', {});
+                shoppingCartData.data = {};
                 $location.path('aircraftList');
               } else {
                 console.log('failed');

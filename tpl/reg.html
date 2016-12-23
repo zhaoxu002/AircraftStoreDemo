@@ -6,24 +6,26 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<form name="regForm" ng-submit="doRegister()">
+		<form name="regForm" ng-submit="doRegister()" novalidate>
 			<div class="form-group">
 				<label for="">用户名：</label>
-				<input type="text" class="form-control" ng-model="username" ng-required="true" ng-change="confirmUsername()">
+				<input type="text" class="form-control" ng-model="username" ng-required="true" ng-change="confirmUsername()" ng-minlength="3" ng-maxlength="32">
 				<span ng-show="yesornot">用户名已被注册</span>
 			</div>
 			<div class="form-group">
 				<label for="">密码：</label>
-				<input type="password" class="form-control" ng-model="pwd" ng-required="true">
+				<input type="password" name="pass" class="form-control" ng-model="pwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
 			</div>
 			<div class="form-group">
 				<label for="">确认密码：</label>
-				<input type="password" class="form-control" ng-model="repwd" ng-required="true">
-				<span ng-show="false">两次密码输入不一致</span>
+				<input type="password" name="repass" class="form-control" ng-model="repwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+				<span ng-show="regForm.repass.$dirty && (!sameornot)">两次密码输入不一致</span>
+
+				<!-- <span ng-show="regForm.repwd.$dirty && regForm.repwd.$invalid">两次密码输入不一致</span> -->
 			</div>
 
 			<div class="form-group">
-				<button class="btn btn-default btn-lg">注 册</button>
+				<button class="btn btn-default btn-lg" ng-disabled="!sameornot || yesornot">注 册</button>
 			</div>
 		</form>
 	</div>
