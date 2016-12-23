@@ -8,7 +8,7 @@
   angular.module('shoppingCartModule', [])
     .controller('shoppingCartCtrl', ['$scope', 'shoppingCartData', function ($scope, shoppingCartData) {
       $scope.shoppingCartList = shoppingCartData.data;
-
+      console.log($scope.shoppingCartList);
       $scope.addNum = function (id) {
         $scope.shoppingCartList[id].countShoppingCart ++;
       }

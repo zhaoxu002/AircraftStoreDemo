@@ -34,6 +34,10 @@
           templateUrl: './tpl/order.html',
           controller: 'straightOrderCtrl'
         })
+        .when('/orderDetail', {
+          templateUrl: './tpl/orderDetail.html',
+          controller: 'orderDetailCtrl'
+        })
         .otherwise({
           redirectTo: '/aircraftList'
         });

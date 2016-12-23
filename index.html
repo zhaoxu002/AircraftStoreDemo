@@ -12,6 +12,7 @@
       <header class="page-header row">
         <h1>SuperAircraftStore <small>出售各类战机</small></h1>
         <span ng-show="user.username">您已登录</span>
+        <a ng-show="user.username" href="#/orderDetail">我的订单</a>
         <a href="#/login" class="btn btn-default" ng-hide="user.username">Login</a>
         <a ng-click="logout()" class="btn btn-default" ng-show="user.username">Logout</a>
         <a href="#/register" class="btn btn-default">Register</a>
@@ -43,5 +44,6 @@
     <script src="./js/userloginModule.js" charset="utf-8"></script>
     <script src="./js/userModelServiceModule.js" charset="utf-8"></script>
     <script src="./js/straightOrderModule.js" charset="utf-8"></script>
+    <script src="./js/orderDetailModule.js" charset="utf-8"></script>
   </body>
 </html>
