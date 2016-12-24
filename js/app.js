@@ -62,26 +62,48 @@
       console.log($scope.user.username);
 
       $scope.logout = function () {
+        cookieService.deleteCookie('userId');
         cookieService.deleteCookie('user');
         $scope.user.username = false;
         $location.path('aircraftList');
       }
 
-      //添加商品到购物车 现置于主控制器中
-      $scope.shoppingCartList = shoppingCartData.data;
-
-      $scope.addToShoppingCart = function (aircraft) {
-        if ($scope.shoppingCartList[aircraft.id]) {
-          $scope.shoppingCartList[aircraft.id].countShoppingCart ++;
+      //去下订单，没登录的要登录
+      $scope.gotoOrder = function () {
+        var usercookie = cookieService.getCookie('user');
+        if (usercookie) {
+          $location.path('order');
         } else {
-          $scope.shoppingCartList[aircraft.id] = {
-            'aircraft_name'    : aircraft.title,
-            'aircraft_price'   : aircraft.price,
-            'countShoppingCart': 1
-          }
+          $location.path('login');
         }
       }
 
+
+      //添加商品到购物车 现置于主控制器中
+      //$scope.shoppingCartList = shoppingCartData.data;
+
+      // $scope.addToShoppingCart = function (aircraft) {
+      //   if ($scope.shoppingCartList[aircraft.id]) {
+      //     $scope.shoppingCartList[aircraft.id].countShoppingCart ++;
+      //   } else {
+      //     $scope.shoppingCartList[aircraft.id] = {
+      //       'aircraft_name'    : aircraft.title,
+      //       'aircraft_price'   : aircraft.price,
+      //       'countShoppingCart': 1
+      //     }
+      //   }
+      // }
+      $scope.addToShoppingCart = function (aircraft) {
+        if (shoppingCartData.data[aircraft.id]) {
+          shoppingCartData.data[aircraft.id].countShoppingCart ++;
+        } else {
+          shoppingCartData.data[aircraft.id] = {
+            'aircraft_name':aircraft.title,
+            'aircraft_price':aircraft.price,
+            'countShoppingCart':1
+          }
+        }
+      }
 
     }])
 })()

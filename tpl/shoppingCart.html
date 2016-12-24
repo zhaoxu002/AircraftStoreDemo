@@ -33,7 +33,8 @@
       </tr>
       <tr>
         <td colspan="5">总价格 {{total | currency : "&yen;"}}</td>
-        <td><a href="#/order">去结算</a></td>
+        <!-- <td><a href="#/order">去结算</a></td> -->
+        <td><a ng-click="gotoOrder()">去结算</a></td>
       </tr>
     </table>
   </div>
