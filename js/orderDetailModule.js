@@ -9,6 +9,7 @@
       'getAircraftData',
       function (IMAGEPATH, $http, $scope, cookieService, $location, getAircraftData) {
         $scope.userId = cookieService.getCookie('userId');
+        console.log($scope.userId);
         getAircraftData.requestData(
           'getOrders.php',
           {user_id: $scope.userId},

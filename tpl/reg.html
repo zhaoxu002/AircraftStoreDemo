@@ -1,32 +1,32 @@
-<div class="row">
-	<div class="col-sm-12">
-		<h2>用户注册</h2>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
+<ion-view title="注册">
+<ion-content has-header="true" padding="false">
+<div class="">
+	<div class="">
 		<form name="regForm" ng-submit="doRegister()" novalidate>
-			<div class="form-group">
-				<label for="">用户名：</label>
-				<input type="text" class="form-control" ng-model="username" ng-required="true" ng-change="confirmUsername()" ng-minlength="3" ng-maxlength="32">
-				<span ng-show="yesornot">用户名已被注册</span>
+			<div class="list">
+				<label for="" class="item item-input">
+					<span class="input-label">用户名</span>
+					<input type="text" class="form-control" ng-model="cc.username" ng-required="true" ng-change="confirmUsername()" ng-minlength="3" ng-maxlength="32">
+					<span ng-show="yesornot">用户名已被注册</span>
+				</label>
+				<label for="" class="item item-input">
+					<span class="input-label">密码</span>
+					<input type="password" name="pass" class="form-control" ng-model="cc.pwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+				</label>
+				<label for="" class="item item-input">
+					<span class="input-label">确认密码</span>
+					<input type="password" name="repass" class="form-control" ng-model="cc.repwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+					<span ng-show="regForm.repass.$dirty && (!sameornot)">两次密码输入不一致</span>
+				</label>
 			</div>
-			<div class="form-group">
-				<label for="">密码：</label>
-				<input type="password" name="pass" class="form-control" ng-model="pwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+			<div class="">
+				<button class="button button-full button-positive" ng-disabled="!sameornot || yesornot">注 册</button>
 			</div>
-			<div class="form-group">
-				<label for="">确认密码：</label>
-				<input type="password" name="repass" class="form-control" ng-model="repwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
-				<span ng-show="regForm.repass.$dirty && (!sameornot)">两次密码输入不一致</span>
-
-				<!-- <span ng-show="regForm.repwd.$dirty && regForm.repwd.$invalid">两次密码输入不一致</span> -->
-			</div>
-
-			<div class="form-group">
-				<button class="btn btn-default btn-lg" ng-disabled="!sameornot || yesornot">注 册</button>
+			<div>
+				已有账号？去<a href="#/login">登录</a>
 			</div>
 		</form>
 	</div>
 </div>
+</ion-content>
+</ion-view>

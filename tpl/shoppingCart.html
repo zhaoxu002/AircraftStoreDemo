@@ -1,41 +1,37 @@
-<div class="row" ng-controller="shoppingCartCtrl">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th>id</th>
-        <th>型号</th>
-        <th>价格</th>
-        <th>数量</th>
-        <th>小计</th>
-        <th>操作</th>
-      </tr>
-      <tr ng-repeat="(key, aircraft) in shoppingCartList">
-        <td>{{key}}</td>
-        <td>{{aircraft.aircraft_name}}</td>
-        <td>{{aircraft.aircraft_price | currency : "&yen;"}}</td>
-        <td>
-          <button class="btn btn-default btn-sm" ng-click="minusNum(key)" data-toggle="tooltip" data-placement="top" title="只剩下一架了" id="minusBtn{{key}}">
-            <span class="glyphicon glyphicon-minus"></span>
-          </button>
-          {{aircraft.countShoppingCart}}
-          <button class="btn btn-default btn-sm" ng-click="addNum(key)"  id="addBtn{{key}}">
-            <span class="glyphicon glyphicon-add"></span>
-          </button>
-        </td>
-        <td>
-          {{aircraft.aircraft_price * aircraft.countShoppingCart | currency : "&yen;"}}
-        </td>
-        <td>
-          <button class="btn btn-default" ng-click="deleteAircraft(key)">
-            删除
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="5">总价格 {{total | currency : "&yen;"}}</td>
-        <!-- <td><a href="#/order">去结算</a></td> -->
-        <td><a ng-click="gotoOrder()">去结算</a></td>
-      </tr>
-    </table>
+<ion-view title="购物车">
+<ion-content has-header="true" padding="true">
+<div>
+  <div class="shoppingcart">
+    <div class="row shoppingcart-unit" ng-repeat="(key, aircraft) in shoppingCartList">
+        <div class="col-33 shoppingcart-img">
+          <img ng-src="{{IMAGEPATH + aircraft.aircraft_image}}" alt="">
+        </div>
+        <div class="col-67 shoppingcart-detail">
+          <p>{{aircraft.aircraft_name}}</p>
+          <p><span>{{aircraft.aircraft_price | currency : "&yen;"}}</span></p>
+          <div class="count-number">数量：
+            <button class="button button-small" ng-click="minusNum(key)" id="minusBtn{{key}}">
+              <span class="icon ion-minus"></span>
+            </button>
+            {{aircraft.countShoppingCart}}
+            <button class="button button-small" ng-click="addNum(key)"  id="addBtn{{key}}">
+              <span class="icon ion-plus"></span>
+            </button>
+            <button class="button button-small button-assertive button-outline" ng-click="deleteAircraft(key)"  id="">
+              删除
+            </button>
+          </div>
+        </div>
+    </div>
+    <div ng-show="quantityOfGoods != 0">
+      <p class="total-price">总价格 {{total | currency : "&yen;"}}</p>
+      <a ng-click="gotoOrder()" class="button button-full button-positive">去结算</a>
+    </div>
+    <div ng-show="quantityOfGoods == 0">
+      <p class="total-price">还没挑好你想买的战机？</p>
+      <a href="#/aircraftList" class="button button-full button-positive">去挑选</a>
+    </div>
   </div>
 </div>
+</ion-content>
+</ion-view>

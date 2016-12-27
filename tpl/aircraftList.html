@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-4">
     <input type="text" class="form-control" ng-model="searchAircraft" placeholder="搜索内容..">
   </div>
@@ -11,27 +11,29 @@
   </div>
 
 
-<hr>
-
-<div class="row aircraft-list" ng-controller="aircraftListCtrl">
-  <ul class="list-group">
-    <li class="list-group-item aircraft-item" ng-repeat="aircraft in aircraftList">
-      <div class="row">
-        <div class="col-xs-4">
-          <a ng-href="#/aircraftDetail/{{aircraft.id}}">
-            <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="{{aircraft.title}}">
-          </a>
-        </div>
-        <div class="col-xs-8">
-          <blockquote>
-            <h3>{{aircraft.title}}</h3>
-            <p>{{aircraft.des}}</p>
-            <div class="text-right">
-              <button class="btn btn-info" ng-click="addToShoppingCart(aircraft)">加入购物车</button>
-            </div>
-          </blockquote>
-        </div>
+<hr> -->
+<ion-view title="AircraftStore">
+<ion-content has-header="true" padding="false">
+<div class="aircraft-list">
+  <ion-slides class="carousel" options="options" slider="data.slider">
+    <ion-slide-page ng-repeat="aircraft in aircraftList">
+      <a ng-href="#/aircraftDetail/{{aircraft.id}}">
+        <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="{{aircraft.title}}">
+      </a>
+    </ion-slide-page>
+  </ion-slides>
+  <div class="list">
+    <div class="item row aircraft-item" ng-repeat="aircraft in aircraftList">
+      <a class="col col-33" ng-href="#/aircraftDetail/{{aircraft.id}}">
+        <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="{{aircraft.title}}">
+      </a>
+      <div class="col col-67">
+        <h3>{{aircraft.title}}</h3>
+        <p>{{aircraft.des}}</p>
+        <button class="button button-positive  button-small" ng-click="addToShoppingCart(aircraft)">加入购物车</button>
       </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
+</ion-content>
+</ion-view>

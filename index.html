@@ -1,35 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>SuperAircraftStore---Fighters and Boomers</title>
-    <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./lib/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./lib/ionic.min.css">
     <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body ng-app="app"  ng-controller="mainCtrl">
-    <div class="container">
-      <header class="page-header row">
-        <h1>SuperAircraftStore <small>出售各类战机</small></h1>
-        <span ng-show="user.username">您已登录</span>
-        <a ng-show="user.username" href="#/orderDetail">我的订单</a>
-        <a href="#/login" class="btn btn-default" ng-hide="user.username">Login</a>
-        <a ng-click="logout()" class="btn btn-default" ng-show="user.username">Logout</a>
-        <a href="#/register" class="btn btn-default">Register</a>
-        <div class="col-sm-4">
-          <button class="btn btn-default" ng-click="gotoShoppingCart()">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span ng-bind="quantityOfGoods"></span>
-          </button>
-        </div>
-      </div>
-      </header>
-      <div ng-view>
-
-      </div>
-    </div>
-
-    <script src="./lib/angular.js" charset="utf-8"></script>
+    <script src="./lib/ionic.bundle.js" charset="utf-8"></script>
     <script src="./lib/angular-route.js" charset="utf-8"></script>
     <script src="./lib/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="./lib/bootstrap.min.js" charset="utf-8"></script>
@@ -45,5 +23,85 @@
     <script src="./js/userModelServiceModule.js" charset="utf-8"></script>
     <script src="./js/straightOrderModule.js" charset="utf-8"></script>
     <script src="./js/orderDetailModule.js" charset="utf-8"></script>
+    <script src="./js/classifyCtrlModule.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="mainCtrl">
+    <!-- 头部 -->
+    <ion-nav-bar class="bar-positive"
+      animation="slide-left-right"
+      back-button-type="button-icon"
+      back-button-icon="ion-arrow-left-c">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light" ng-show="titleornot">
+      <div class="tabs">
+        <a class="tab-item" href="#/classify/{{cate.id}}" ng-repeat="cate in nationList">
+          {{cate.cate_name}}战机
+        </a>
+        <!-- <a class="tab-item" href="#">
+          sb
+        </a>
+        <a class="tab-item" href="#">
+          sb
+        </a> -->
+
+
+      </div>
+    </div>
+    <!-- 身体 -->
+    <ion-nav-view animation="slide-left-right">
+
+    </ion-nav-view>
+    <!-- 脚部 -->
+    <ion-tabs tabs-style="tabs-icon-top" tabs-type="tabs-positive">
+      <ion-tab title="首页" icon="ion-home" ui-sref="index">
+        <ion-nav-view name="home">
+
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="分类" icon="ion-ionic" ui-sref="classify">
+        <ion-nav-view name="classify">
+
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="购物车" icon="ion-bag" ui-sref="shoppingCart" badge="quantityOfGoods">
+        <!-- <span ng-bind="quantityOfGoods"></span> -->
+        <ion-nav-view name="shoppingCart">
+
+        </ion-nav-view>
+      </ion-tab>
+      <ion-tab title="个人中心" icon="ion-person" ui-sref="person">
+        <ion-nav-view name="person">
+
+        </ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+
+
+
+
+    <!-- <ion-header-bar class="bar-dark">
+      <h1 class="title" ng-show="$location.path() == '/aircraftList'">SuperAircraftStore</h1>
+      <h1 class="title" ng-show="{{$location.path() == '/shoppingCart'}}">购物车</h1>
+
+    </ion-header-bar>
+    <ion-content class="has-footer" padding="false" direction="y" locking="false">
+    <div class="container">
+      <div ng-view>
+
+      </div>
+    </div>
+    </ion-content>
+    <ion-footer-bar class="bar-dark tabs">
+      <a href="#/aircraftList" class="tab-item">首页</a>
+      <a href="#/aircraftList" class="tab-item">分类</a>
+      <a ng-click="gotoShoppingCart()" class="tab-item">
+        购物车
+        <span ng-bind="quantityOfGoods"></span>
+      </a>
+      <a ng-click="gotoCenter()" class="tab-item">个人</a>
+    </ion-footer-bar> -->
+
   </body>
 </html>

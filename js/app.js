@@ -1,5 +1,6 @@
 (function () {
   angular.module('app', [
+    'ionic',
     'ngRoute',
     'localStorageModule',
     'configModule',
@@ -11,7 +12,8 @@
     'cookieServiceModule',
     'shoppingCartModule',
     'straightOrderModule',
-    'orderDetailModule'
+    'orderDetailModule',
+    'classifyCtrlModule'
   ])
     .service('shoppingCartData', ['localStorageService',function (localStorageService) {
       var lsdata = localStorageService.getData('shoppingCart');
@@ -24,9 +26,8 @@
       //shoppingCartData.data是存储在localstorage中的购物车商品信息,许多模块都会用到
     }])
     //这个是控制购物车模块的
-    .controller('mainCtrl', ['$scope', '$http', 'shoppingCartData', '$location', 'localStorageService', 'cookieService', 'USERNAME', function ($scope, $http, shoppingCartData, $location, localStorageService, cookieService, USERNAME) {
+    .controller('mainCtrl', ['$scope', '$http', 'shoppingCartData', '$location', 'localStorageService', 'cookieService', 'USERNAME', '$ionicHistory', '$ionicPopup','getAircraftData', function ($scope, $http, shoppingCartData, $location, localStorageService, cookieService, USERNAME, $ionicHistory, $ionicPopup, getAircraftData) {
       //购物车中商品种类 显示在button中
-
       $scope.quantityOfGoods = 0;
       //$watch用于监听模型变化，
       $scope.$watch(
@@ -59,40 +60,48 @@
       user.username = cookieService.getCookie('user');
       $scope.user = user;
 
-      console.log($scope.user.username);
-
       $scope.logout = function () {
         cookieService.deleteCookie('userId');
         cookieService.deleteCookie('user');
         $scope.user.username = false;
-        $location.path('aircraftList');
+
+        $scope.showAlert = function() {
+          var alertPopup = $ionicPopup.alert({
+            title: '提示',
+            template: '用户已注销，即将返回首页'
+          });
+          alertPopup.then(function(res) {
+            //$location.path('/login');
+            $ionicHistory.goBack(-1);
+          });
+        };
+        $scope.showAlert();
+        //$location.path('/orderDetail');
+        //$scope.doRefresh();
       }
 
       //去下订单，没登录的要登录
       $scope.gotoOrder = function () {
+        console.log($location.path());
+        console.log('函数执行了');
         var usercookie = cookieService.getCookie('user');
         if (usercookie) {
-          $location.path('order');
+          $location.path('/order');
+        } else {
+          $location.path('/login');
+        }
+      }
+      //去个人中心，没登录的注册或登录
+      $scope.gotoCenter = function () {
+        var usercookie =  cookieService.getCookie('user');
+        if (usercookie) {
+          $location.path('orderDetail');
         } else {
           $location.path('login');
         }
       }
 
-
       //添加商品到购物车 现置于主控制器中
-      //$scope.shoppingCartList = shoppingCartData.data;
-
-      // $scope.addToShoppingCart = function (aircraft) {
-      //   if ($scope.shoppingCartList[aircraft.id]) {
-      //     $scope.shoppingCartList[aircraft.id].countShoppingCart ++;
-      //   } else {
-      //     $scope.shoppingCartList[aircraft.id] = {
-      //       'aircraft_name'    : aircraft.title,
-      //       'aircraft_price'   : aircraft.price,
-      //       'countShoppingCart': 1
-      //     }
-      //   }
-      // }
       $scope.addToShoppingCart = function (aircraft) {
         if (shoppingCartData.data[aircraft.id]) {
           shoppingCartData.data[aircraft.id].countShoppingCart ++;
@@ -100,10 +109,53 @@
           shoppingCartData.data[aircraft.id] = {
             'aircraft_name':aircraft.title,
             'aircraft_price':aircraft.price,
-            'countShoppingCart':1
+            'countShoppingCart':1,
+            'aircraft_image':aircraft.images[0].image_name
           }
         }
       }
+      console.log($location.$$url);
+      //分类页面的二级标题
+      $scope.titleornot = false;
+      $scope.$watch(function () {
+        return $location.$$url
+      }, function () {
+        if ($location.$$url == '/classify') {
+          $scope.titleornot = true;
+          console.log('$$url'+$location.$$url);
+          console.log('titleornot'+$scope.titleornot);
+        } else {
+          $scope.titleornot = false;
+          console.log('$$url'+$location.$$url);
+          console.log('titleornot'+$scope.titleornot);
+        }
+      },true);
+      //获取一下商品分类，需要getAircraftData
+      $scope.nationList = [];
+      getAircraftData.requestData(
+        'cates.php',
+        {},
+        function (data) {
 
+          $scope.nationList = data;
+          console.log($scope.nationList);
+        },function (error) {
+          console.log(error);
+        }
+      )
+
+
+
+      //定义一个alert框
+      // $scope.showAlert = function() {
+      //   var alertPopup = $ionicPopup.alert({
+      //     title: '提示',
+      //     template: 'It might taste good'
+      //   });
+      //   alertPopup.then(function(res) {
+      //     console.log('Thank you for not eating my delicious ice cream cone');
+      //   });
+      // };
+      //
     }])
 })()

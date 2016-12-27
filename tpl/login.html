@@ -1,25 +1,26 @@
-<div class="row">
-	<div class="col-sm-12">
-		<h2>用户登录</h2>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
-		<form name="regForm" ng-submit="doLogin()">
-			<div class="form-group">
-				<label for="">用户名：</label>
-				<input type="text" class="form-control" ng-model="username" ng-required="true">
+<ion-view title="登录">
+<ion-content has-header="true" padding="true">
+<div class="">
+	<div class="">
+		<form class="" name="regForm" ng-submit="doLogin()">
+			<div class="list">
+				<label for="" class="item item-input">
+					<span class="input-label">用户名</span>
+					<input type="text" class="form-control" ng-model="uu.username" ng-required="true">
+				</label>
+				<label for="" class="item item-input">
+					<span class="input-label">密码</span>
+					<input type="password" class="form-control" ng-model="uu.pwd" ng-required="true">
+				</label>
 			</div>
-			<div class="form-group">
-				<label for="">密码：</label>
-				<input type="password" class="form-control" ng-model="pwd" ng-required="true">
+			<div class="">
+				<button class="button button-full button-positive">登 录</button>
 			</div>
-
-
-			<div class="form-group">
-				<button class="btn btn-default btn-lg">登 录</button>
+			<div>
+				没有账号？去<a href="#/register">注册</a>
 			</div>
 		</form>
 	</div>
 </div>
+</ion-content>
+</ion-view>

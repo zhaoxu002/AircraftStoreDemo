@@ -1,9 +1,24 @@
-<div class="row">
-  <div class="col-md-12">
-    <span>我的订单</span>
+<ion-view title="个人中心">
+<ion-nav-buttons side="right">
+  <button class="button button-clear button-small" ng-click="logout()" ng-show="userId">
+    注销
+  </button>
+</ion-nav-buttons>
+<ion-content has-header="true" padding="false">
+<div class="login-or-reg" ng-hide="userId">
+  <span>欢迎你来</span>
+  <a class="button button-full button-positive" href="#/login">登录</a>
+  <a class="button button-full button-outline button-positive" href="#/register">注册</a>
+</div>
+<div class="">
+  <div class="">
+    <span ng-show="userId">我的订单</span>
     <!-- 每个订单repeat -->
-    <ul>
-      <li ng-repeat="order in ordercontentList">
+    <div class="list">
+
+      <div class="" ng-repeat="order in ordercontentList">
+
+        <div class="item item-text-wrap">
         <span>订单编号{{order.order_id}}</span><br>
         <span>收货人{{order.order_name}}</span><br>
         <span>收货地址{{order.order_address}}</span><br>
@@ -17,13 +32,17 @@
               <div>
                 <img src="" alt="">
               </div>
-              <span>战机型号：{{orderDetail.aircraft_title}}</span>
-              <span>战机价格：{{orderDetail.aircraft_price}}</span>
+              <span>战机型号：{{orderDetail.aircraft_title}}</span><br>
+              <span>战机价格：{{orderDetail.aircraft_price}}</span><br>
               <span>采购数量：{{orderDetail.orderdetail_number}}</span><br>
             </td>
           </tr>
         </table>
-      </li>
-    </ul>
+      </div>
+      <div class="item item-divider"></div>
+    </div>
+    </div>
   </div>
 </div>
+</ion-content>
+</ion-view>
