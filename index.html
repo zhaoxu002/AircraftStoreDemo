@@ -24,6 +24,7 @@
     <script src="./js/straightOrderModule.js" charset="utf-8"></script>
     <script src="./js/orderDetailModule.js" charset="utf-8"></script>
     <script src="./js/classifyCtrlModule.js" charset="utf-8"></script>
+    <script src="./js/classifyDetailCtrlModule.js" charset="utf-8"></script>
   </head>
   <body ng-controller="mainCtrl">
     <!-- 头部 -->
@@ -34,21 +35,21 @@
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
-    <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light" ng-show="titleornot">
+    <!-- <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light" ng-show="titleornot">
       <div class="tabs">
         <a class="tab-item" href="#/classify/{{cate.id}}" ng-repeat="cate in nationList">
           {{cate.cate_name}}战机
         </a>
-        <!-- <a class="tab-item" href="#">
+        <a class="tab-item" href="#">
           sb
         </a>
         <a class="tab-item" href="#">
           sb
-        </a> -->
+        </a>
 
 
       </div>
-    </div>
+    </div> -->
     <!-- 身体 -->
     <ion-nav-view animation="slide-left-right">
 
@@ -66,7 +67,6 @@
         </ion-nav-view>
       </ion-tab>
       <ion-tab title="购物车" icon="ion-bag" ui-sref="shoppingCart" badge="quantityOfGoods">
-        <!-- <span ng-bind="quantityOfGoods"></span> -->
         <ion-nav-view name="shoppingCart">
 
         </ion-nav-view>

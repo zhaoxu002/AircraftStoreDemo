@@ -13,7 +13,8 @@
     'shoppingCartModule',
     'straightOrderModule',
     'orderDetailModule',
-    'classifyCtrlModule'
+    'classifyCtrlModule',
+    'classifyDetailCtrlModule'
   ])
     .service('shoppingCartData', ['localStorageService',function (localStorageService) {
       var lsdata = localStorageService.getData('shoppingCart');
@@ -115,34 +116,34 @@
         }
       }
       console.log($location.$$url);
-      //分类页面的二级标题
-      $scope.titleornot = false;
-      $scope.$watch(function () {
-        return $location.$$url
-      }, function () {
-        if ($location.$$url == '/classify') {
-          $scope.titleornot = true;
-          console.log('$$url'+$location.$$url);
-          console.log('titleornot'+$scope.titleornot);
-        } else {
-          $scope.titleornot = false;
-          console.log('$$url'+$location.$$url);
-          console.log('titleornot'+$scope.titleornot);
-        }
-      },true);
+      // //分类页面的二级标题
+      // $scope.titleornot = false;
+      // $scope.$watch(function () {
+      //   return $location.$$url
+      // }, function () {
+      //   if ($location.$$url == '/classify') {
+      //     $scope.titleornot = true;
+      //     console.log('$$url'+$location.$$url);
+      //     console.log('titleornot'+$scope.titleornot);
+      //   } else {
+      //     $scope.titleornot = false;
+      //     console.log('$$url'+$location.$$url);
+      //     console.log('titleornot'+$scope.titleornot);
+      //   }
+      // },true);
       //获取一下商品分类，需要getAircraftData
-      $scope.nationList = [];
-      getAircraftData.requestData(
-        'cates.php',
-        {},
-        function (data) {
-
-          $scope.nationList = data;
-          console.log($scope.nationList);
-        },function (error) {
-          console.log(error);
-        }
-      )
+      // $scope.nationList = [];
+      // getAircraftData.requestData(
+      //   'cates.php',
+      //   {},
+      //   function (data) {
+      //
+      //     $scope.nationList = data;
+      //     console.log($scope.nationList);
+      //   },function (error) {
+      //     console.log(error);
+      //   }
+      // )
 
 
 

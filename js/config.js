@@ -1,9 +1,9 @@
 (function () {
   angular.module('configModule', [])
     //api文件的绝对路径，仅限本地
-    .constant('APIPATH', 'http://storedemo/aircraftStoreDemo/PHP/bookapi/')
+    .constant('APIPATH', 'http://192.168.204.78/aircraftStoreDemo/PHP/bookapi/')
     //图片的绝对路径，仅限本地
-    .constant('IMAGEPATH', 'http://storedemo/aircraftStoreDemo/PHP/images/')
+    .constant('IMAGEPATH', 'http://192.168.204.78/aircraftStoreDemo/PHP/images/')
     //cookie中用户名 默认不存在
     .constant('USERNAME', false)
     //配置注入路由route
@@ -116,16 +116,16 @@
               controller: 'aircraftDetailCtrl'
             }
           }
+        })
+        .state('classifyDetail',{
+          url: '/classifyDetail/:id',
+          views:{
+            'classify':{
+              templateUrl: './tpl/classifyDetail.html',
+              controller: 'classifyDetailCtrl'
+            }
+          }
         });
-        // .state('classify.detail',{
-        //   url: '/classify/:id',
-        //   views:{
-        //     'classify':{
-        //       templateUrl: './tpl/classify.html',
-        //       controller:
-        //     }
-        //   }
-        // });
       $urlRouterProvider.otherwise("/aircraftList");
     }])
 })()

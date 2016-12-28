@@ -8,20 +8,31 @@
       '$location',
       '$stateParams',
       function ($scope, getAircraftData, shoppingCartData, IMAGEPATH, $location, $stateParams) {
-        $scope.IMAGEPATH = IMAGEPATH;
-        $scope.aircraftList = [];
+        // $scope.IMAGEPATH = IMAGEPATH;
+        // $scope.aircraftList = [];
+        // getAircraftData.requestData(
+        //   'book.php',
+        //   {cate_id: 1},
+        //   function (data) {
+        //     $scope.aircraftList = data;
+        //     console.log(data);
+        //   },
+        //   function (error) {
+        //     console.log(error);
+        //   }
+        // )
+        $scope.nationList = [];
         getAircraftData.requestData(
-          'book.php',
-          {cate_id: 1},
+          'cates.php',
+          {},
           function (data) {
-            $scope.aircraftList = data;
-            console.log(data);
-          },
-          function (error) {
+
+            $scope.nationList = data;
+            console.log($scope.nationList);
+          },function (error) {
             console.log(error);
           }
         )
-
       }
 
     ])

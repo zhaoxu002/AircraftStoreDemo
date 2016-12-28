@@ -1,17 +1,12 @@
 <ion-view title="分类">
-<ion-content has-header="true" class="has-subheader" padding="false">
+<ion-content has-header="true" padding="false">
   <div class="content">
     <div class="list">
-      <div class="item row aircraft-item" ng-repeat="aircraft in aircraftList">
-        <a class="col col-33" ng-href="#/aircraftDetail/{{aircraft.id}}">
-          <img ng-src="{{IMAGEPATH + aircraft.images[0].image_name}}" alt="{{aircraft.title}}">
-        </a>
-        <div class="col col-67">
-          <h3>{{aircraft.title}}</h3>
-          <p>{{aircraft.des}}</p>
-          <button class="button button-positive  button-small" ng-click="addToShoppingCart(aircraft)">加入购物车</button>
-        </div>
-      </div>
+
+      <a href="#/classifyDetail/{{nation.id}}" class="item" ng-repeat="nation in nationList">
+        {{nation.cate_name}}
+      </a>
+
     </div>
   </div>
 </ion-content>

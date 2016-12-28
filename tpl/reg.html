@@ -6,16 +6,16 @@
 			<div class="list">
 				<label for="" class="item item-input">
 					<span class="input-label">用户名</span>
-					<input type="text" class="form-control" ng-model="cc.username" ng-required="true" ng-change="confirmUsername()" ng-minlength="3" ng-maxlength="32">
+					<input type="text" class="form-control" ng-model="uu.username" ng-required="true" ng-change="confirmUsername()" ng-minlength="3" ng-maxlength="32">
 					<span ng-show="yesornot">用户名已被注册</span>
 				</label>
 				<label for="" class="item item-input">
 					<span class="input-label">密码</span>
-					<input type="password" name="pass" class="form-control" ng-model="cc.pwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+					<input type="password" name="pass" class="form-control" ng-model="uu.pwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
 				</label>
 				<label for="" class="item item-input">
 					<span class="input-label">确认密码</span>
-					<input type="password" name="repass" class="form-control" ng-model="cc.repwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
+					<input type="password" name="repass" class="form-control" ng-model="uu.repwd" ng-required="true" ng-minlength="6" ng-maxlength="32" ng-change="confirmRepwd()">
 					<span ng-show="regForm.repass.$dirty && (!sameornot)">两次密码输入不一致</span>
 				</label>
 			</div>

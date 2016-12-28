@@ -9,6 +9,7 @@
           username: $scope.uu.username,
           password: $scope.uu.pwd
         }), function (data) {
+          console.log(data);
           if (data.data.code === 0) {
             //alert('reg success, please login');
             $scope.showAlert = function() {
@@ -22,10 +23,10 @@
             };
             $scope.showAlert();
           } else {
-            alert('reg fail');
+            alert('reg small fail');
           }
         }, function (data) {
-          alert('reg fail');
+          alert('reg big fail'+data);
         })
       }
       //验证两次输入的密码相同
@@ -86,7 +87,7 @@
               alertPopup.then(function(res) {
                 //$location.path('/orderDetail');
                 //$ionicHistory.backView();
-                $ionicHistory.goBack(-1);
+                $ionicHistory.goBack(-2);
                 console.log($ionicHistory);
               });
             };
