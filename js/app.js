@@ -72,8 +72,8 @@
             template: '用户已注销，即将返回首页'
           });
           alertPopup.then(function(res) {
-            //$location.path('/login');
-            $ionicHistory.goBack(-1);
+            $location.path('/aircraftList');
+            //$ionicHistory.goBack(-1);
           });
         };
         $scope.showAlert();
@@ -89,7 +89,16 @@
         if (usercookie) {
           $location.path('/order');
         } else {
-          $location.path('/login');
+          $scope.showAlert = function() {
+            var alertPopup = $ionicPopup.alert({
+              title: '提示',
+              template: '你还没登录，现在将跳转到登录页'
+            });
+            alertPopup.then(function(res) {
+              $location.path('/login');
+            });
+          };
+          $scope.showAlert();
         }
       }
       //去个人中心，没登录的注册或登录

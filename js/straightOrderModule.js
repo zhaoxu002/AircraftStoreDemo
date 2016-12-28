@@ -10,8 +10,8 @@
       '$httpParamSerializer',
       'cookieService',
       'localStorageService',
-
-      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService, localStorageService) {
+      '$ionicPopup',
+      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService, localStorageService, $ionicPopup) {
         //获取订单商品
 
         $scope.pp = {};
@@ -23,9 +23,9 @@
         // 服务器获取用户填写的订单信息
         $scope.IMAGEPATH = IMAGEPATH;
         $scope.pp.userId = $scope.userId;
-        console.log($scope.pp);
-        console.log($scope.pp.orderList[1].aircraft_image);
-        console.log($scope.IMAGEPATH);
+        //console.log($scope.pp);
+        //console.log($scope.pp.orderList[1].aircraft_image);
+        //console.log($scope.IMAGEPATH);
         $scope.postOrderDetail = function () {
           userModelService.postUser(
             'order.php',
@@ -42,7 +42,17 @@
                 console.log('success');
                 localStorageService.setData('shoppingCart', {});
                 shoppingCartData.data = {};
-                $location.path('/aircraftList');
+                $scope.showAlert = function() {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '提示',
+                    template: '提交订单成功,即将去往个人中心'
+                  });
+                  alertPopup.then(function(res) {
+                    $location.path('/orderDetail');
+                  });
+                };
+                $scope.showAlert();
+
               } else {
                 console.log('failed');
                 console.log(response.data.data);

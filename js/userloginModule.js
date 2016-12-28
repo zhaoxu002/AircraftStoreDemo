@@ -1,13 +1,13 @@
 (function () {
   angular.module('userloginModule', [])
     .controller('registerCtrl', ['$scope', 'userModelService', '$ionicPopup', '$httpParamSerializer', '$location', function ($scope, userModelService, $ionicPopup, $httpParamSerializer, $location) {
-      $scope.uu = {};
+      //$scope.uu = {};
       $scope.cc = {};
       $scope.doRegister = function () {
         console.log($scope.uu);
         userModelService.postUser('register.php', $httpParamSerializer({
-          username: $scope.uu.username,
-          password: $scope.uu.pwd
+          username: $scope.cc.username,
+          password: $scope.cc.pwd
         }), function (data) {
           console.log(data);
           if (data.data.code === 0) {
@@ -65,6 +65,7 @@
 
     }])
     .controller('loginCtrl', ['$scope', 'userModelService', '$httpParamSerializer', '$location', 'cookieService', 'USERNAME', '$ionicPopup', '$ionicHistory', function ($scope, userModelService, $httpParamSerializer, $location, cookieService, USERNAME, $ionicPopup, $ionicHistory) {
+      $scope.dirty = false;
       $scope.uu = {};
       $scope.doLogin = function () {
         console.log($scope.uu);
@@ -85,10 +86,10 @@
                 template: '登录成功'
               });
               alertPopup.then(function(res) {
-                //$location.path('/orderDetail');
+                $location.path('/orderDetail');
                 //$ionicHistory.backView();
-                $ionicHistory.goBack(-2);
-                console.log($ionicHistory);
+                //$ionicHistory.goBack(-2);
+                //console.log($ionicHistory);
               });
             };
             $scope.showAlert();

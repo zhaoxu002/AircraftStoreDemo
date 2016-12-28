@@ -6,15 +6,15 @@
 			<div class="list">
 				<label for="" class="item item-input">
 					<span class="input-label">用户名</span>
-					<input type="text" class="form-control" ng-model="uu.username" ng-required="true">
+					<input type="text" class="form-control" ng-model="uu.username" ng-required="true" name="username">
 				</label>
 				<label for="" class="item item-input">
 					<span class="input-label">密码</span>
-					<input type="password" class="form-control" ng-model="uu.pwd" ng-required="true">
+					<input type="password" class="form-control" ng-model="uu.pwd" ng-required="true" name="password">
 				</label>
 			</div>
 			<div class="">
-				<button class="button button-full button-positive">登 录</button>
+				<button class="button button-full button-positive" ng-disabled="!(regForm.username.$dirty || regForm.password.$dirty)">登 录</button>
 			</div>
 			<div>
 				没有账号？去<a href="#/register">注册</a>
