@@ -86,9 +86,9 @@
                 template: '登录成功'
               });
               alertPopup.then(function(res) {
-                $location.path('/orderDetail');
+                //$location.path('/orderDetail');
                 //$ionicHistory.backView();
-                //$ionicHistory.goBack(-2);
+                $ionicHistory.goBack(-2);
                 //console.log($ionicHistory);
               });
             };

@@ -1,5 +1,8 @@
 (function () {
   angular.module('configModule', [])
+    .config(function ($ionicConfigProvider) {
+      $ionicConfigProvider.views.maxCache(0);
+    })
     //api文件的绝对路径，仅限本地
     .constant('APIPATH', 'http://192.168.204.78/aircraftStoreDemo/PHP/bookapi/')
     //图片的绝对路径，仅限本地
@@ -67,7 +70,8 @@
           views: {
             'shoppingCart': {
               templateUrl: './tpl/shoppingCart.html',
-              controller: 'shoppingCartCtrl'
+              controller: 'shoppingCartCtrl',
+              cache: false
             }
           }
         })
@@ -77,7 +81,8 @@
           views: {
             'person': {
               templateUrl: './tpl/orderDetail.html',
-              controller: 'orderDetailCtrl'
+              controller: 'orderDetailCtrl',
+              cache: false
             }
           }
         })
@@ -86,7 +91,8 @@
           views: {
             'shoppingCart': {
               templateUrl: './tpl/order.html',
-              controller: 'straightOrderCtrl'
+              controller: 'straightOrderCtrl',
+              cache: false
             }
           }
         })
@@ -95,7 +101,8 @@
          views: {
            'person': {
              templateUrl: './tpl/login.html',
-             controller: 'loginCtrl'
+             controller: 'loginCtrl',
+             cache: false
            }
          }
         })
@@ -104,7 +111,8 @@
           views: {
             'person': {
               templateUrl: './tpl/reg.html',
-              controller: 'registerCtrl'
+              controller: 'registerCtrl',
+              cache: false
             }
           }
         })

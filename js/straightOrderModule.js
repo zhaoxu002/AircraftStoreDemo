@@ -11,7 +11,8 @@
       'cookieService',
       'localStorageService',
       '$ionicPopup',
-      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService, localStorageService, $ionicPopup) {
+      '$ionicHistory',
+      function ($http, $scope, shoppingCartData, $location, IMAGEPATH, userModelService, $httpParamSerializer, cookieService, localStorageService, $ionicPopup, $ionicHistory) {
         //获取订单商品
 
         $scope.pp = {};
@@ -45,10 +46,11 @@
                 $scope.showAlert = function() {
                   var alertPopup = $ionicPopup.alert({
                     title: '提示',
-                    template: '提交订单成功,即将去往个人中心'
+                    template: '提交订单成功, 请到个人中心查看'
                   });
                   alertPopup.then(function(res) {
-                    $location.path('/orderDetail');
+                    $ionicHistory.goBack();
+                    //$location.path('/orderDetail');
                   });
                 };
                 $scope.showAlert();
