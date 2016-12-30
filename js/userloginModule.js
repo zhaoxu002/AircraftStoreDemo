@@ -1,6 +1,6 @@
 (function () {
   angular.module('userloginModule', [])
-    .controller('registerCtrl', ['$scope', 'userModelService', '$ionicPopup', '$httpParamSerializer', '$location', function ($scope, userModelService, $ionicPopup, $httpParamSerializer, $location) {
+    .controller('registerCtrl', ['$scope', 'userModelService', '$ionicPopup', '$httpParamSerializer', '$location', '$state', function ($scope, userModelService, $ionicPopup, $httpParamSerializer, $location, $state) {
       //$scope.uu = {};
       $scope.cc = {};
       $scope.doRegister = function () {
@@ -64,7 +64,7 @@
 
 
     }])
-    .controller('loginCtrl', ['$scope', 'userModelService', '$httpParamSerializer', '$location', 'cookieService', 'USERNAME', '$ionicPopup', '$ionicHistory', function ($scope, userModelService, $httpParamSerializer, $location, cookieService, USERNAME, $ionicPopup, $ionicHistory) {
+    .controller('loginCtrl', ['$scope', 'userModelService', '$httpParamSerializer', '$location', 'cookieService', 'USERNAME', '$ionicPopup', '$ionicHistory', '$state', function ($scope, userModelService, $httpParamSerializer, $location, cookieService, USERNAME, $ionicPopup, $ionicHistory, $state) {
       $scope.dirty = false;
       $scope.uu = {};
       $scope.doLogin = function () {
@@ -88,8 +88,10 @@
               alertPopup.then(function(res) {
                 //$location.path('/orderDetail');
                 //$ionicHistory.backView();
-                $ionicHistory.goBack(-2);
+                //$ionicHistory.goBack(-2);
                 //console.log($ionicHistory);
+                //以上方式都不好用
+                $state.go('person');
               });
             };
             $scope.showAlert();

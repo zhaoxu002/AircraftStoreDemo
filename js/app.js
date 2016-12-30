@@ -60,12 +60,10 @@
       var user = {};
       user.username = cookieService.getCookie('user');
       $scope.user = user;
-
       $scope.logout = function () {
         cookieService.deleteCookie('userId');
         cookieService.deleteCookie('user');
         $scope.user.username = false;
-
         $scope.showAlert = function() {
           var alertPopup = $ionicPopup.alert({
             title: '提示',
@@ -73,12 +71,9 @@
           });
           alertPopup.then(function(res) {
             $location.path('/aircraftList');
-            //$ionicHistory.goBack(-1);
           });
         };
         $scope.showAlert();
-        //$location.path('/orderDetail');
-        //$scope.doRefresh();
       }
 
       //去下订单，没登录的要登录
@@ -124,8 +119,8 @@
           }
         }
       }
-      console.log($location.$$url);
-      // //分类页面的二级标题
+      //console.log($location.$$url);
+      // //分类页面的二级标题 已废弃
       // $scope.titleornot = false;
       // $scope.$watch(function () {
       //   return $location.$$url
@@ -140,6 +135,9 @@
       //     console.log('titleornot'+$scope.titleornot);
       //   }
       // },true);
+
+
+
       //获取一下商品分类，需要getAircraftData
       // $scope.nationList = [];
       // getAircraftData.requestData(
